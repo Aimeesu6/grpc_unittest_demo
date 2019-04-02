@@ -6,7 +6,7 @@
 import grpc
 import unittest
 
-from proto import data_pb2, data_pb2_grpc
+from protobuf import data_pb2, data_pb2_grpc
 
 _HOST = 'localhost'
 _PORT = '8000'

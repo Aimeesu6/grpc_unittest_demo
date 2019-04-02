@@ -10,15 +10,14 @@ from common import Const
 
 class SQLDataBase:
 
-    # def __init__(self,user='',password='',database='',charset=None,port=3306):
     def __init__(self, **kwargs):
         try:
             self._conn = pymysql.connect(host=kwargs["host"], user=kwargs["user"], password=kwargs["password"],
                                          charset=kwargs["charset"], database=kwargs["database"], port=kwargs["port"])
             self.__cursor = None
             print("连接数据库... ...")
-        except pymysql.Error as err:
-            print('数据库连接错误：' + err.msg)
+        except pymysql.DatabaseError:
+            print('数据库连接错误... ...')
 
     def createTable(self, tablename, **field):
         cursor = self.__getCursor()
